@@ -26,8 +26,8 @@ MUSIC_DIR=/path/to/music/dir CONFIG_DIR=/path/to/config ./run.sh
 
 ```sh
 cp docker-cherrymusic@.service /usr/lib/systemd/system
-systemd start docker-cherrymusic@${USER}
+systemctl start docker-cherrymusic@${USER}
 # to start it automatically on boot
-systemd enable docker-cherrymusic@${user}
+systemctl enable docker-cherrymusic@${user}
 ```
 

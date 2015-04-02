@@ -14,7 +14,7 @@ This could take a while, because there is a lot of stuff to install.
 
 ### run script
 
-**WARN**: When you start cherrymusic for the first time, you will be asked to create an admin user in the web frontend. Make sure that your service is not accessible from the web when you do this! It's not possible to create the admin user with cherrymusic's CLI at the moment.
+**WARNING**: When you start cherrymusic for the first time, you will be asked to create an admin user in the web frontend. Make sure that your service is not accessible from the web when you do this! It's not possible to create the admin user with cherrymusic's CLI at the moment.
 
 If you want to use the default paths, you can run `./run.sh` and you're good to go, else set the desired paths with one or more environment variables, like this:
 

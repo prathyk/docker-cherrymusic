@@ -1,12 +1,12 @@
 #!/usr/bin/bash
 
-SCRIPT_DIR=$(dirname ${BASH_SOURCE[0]})
-MUSIC_DIR=${MUSIC_DIR:-${HOME}/Music}
-CONFIG_DIR=${CONFIG_DIR:-${SCRIPT_DIR}/config}
-SHARED_DIR=${SHARED_DIR:-${SCRIPT_DIR}/share}
+SCRIPT_ROOT=$(dirname ${BASH_SOURCE[0]})
+MUSIC_PATH=${MUSIC_PATH:-${HOME}/Music}
+CONFIG_PATH=${CONFIG_PATH:-${SCRIPT_ROOT}/config}
+SHARED_PATH=${SHARED_PATH:-${SCRIPT_ROOT}/share}
 
 docker run --name docker-cherrymusic --rm -p 18100:8080 \
-    --volume $MUSIC_DIR:/home/cm/basedir/music \
-    --volume $CONFIG_DIR:/home/cm/.config/cherrymusic \
-    --volume $SHARED_DIR:/home/cm/.local/share/cherrymusic \
+    --volume $MUSIC_PATH:/home/cm/basedir/music \
+    --volume $CONFIG_PATH:/home/cm/.config/cherrymusic \
+    --volume $SHARED_PATH:/home/cm/.local/share/cherrymusic \
     cherrymusic sh -c "cherrymusic $@"

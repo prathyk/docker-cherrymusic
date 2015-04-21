@@ -4,8 +4,7 @@ MAINTAINER Andreas Linz "klingt.net@gmail.com"
 
 # update packages
 RUN apt-get update &&\
-    apt-get upgrade -y &&\
-    apt-get dist-upgrade -y
+    apt-get upgrade -y
 
 # install requirements
 RUN apt-get install -y python3-pip sqlite\
@@ -14,7 +13,8 @@ RUN apt-get install -y python3-pip sqlite\
     faad\
     flac\
     mpg123\
-    imagemagick
+    imagemagick &&\
+    rm -rf /var/lib/apt/lists/*
 
 # set locale
 RUN locale-gen en_US.UTF-8 &&\

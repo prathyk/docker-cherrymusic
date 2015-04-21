@@ -7,13 +7,15 @@ RUN apt-get update &&\
     apt-get upgrade -y
 
 # install requirements
-RUN apt-get install -y python3-pip sqlite\
-    lame\
-    vorbis-tools\
+RUN apt-get install -y\
     faad\
     flac\
+    imagemagick\
+    lame\
     mpg123\
-    imagemagick &&\
+    python3-pip\
+    sqlite\
+    vorbis-tools &&\
     rm -rf /var/lib/apt/lists/*
 
 # set locale

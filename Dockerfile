@@ -2,12 +2,9 @@
 FROM phusion/baseimage:latest
 MAINTAINER Andreas Linz "klingt.net@gmail.com"
 
-# update packages
-RUN apt-get update &&\
-    apt-get upgrade -y
-
 # install requirements
-RUN apt-get install -y\
+RUN apt-get update &&\
+    apt-get install -y\
     faad\
     flac\
     imagemagick\
@@ -44,4 +41,4 @@ VOLUME /home/cm/basedir /home/cm/.config/cherrymusic /home/cm/.local/share/cherr
 USER    cm
 ENV     HOME /home/cm
 WORKDIR /home/cm
-CMD [ "/bin/sh" "-c" "cherrymusic" ]
+CMD     cherrymusic

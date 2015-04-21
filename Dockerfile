@@ -1,5 +1,5 @@
 # http://phusion.github.io/baseimage-docker/#solution
-FROM phusion/baseimage
+FROM phusion/baseimage:latest
 MAINTAINER Andreas Linz "klingt.net@gmail.com"
 
 # update packages

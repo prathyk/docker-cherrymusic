@@ -13,6 +13,9 @@ backup:
 build:
 	docker build -t $(NAME) .
 
+config:
+	docker run --rm --volumes-from $(NAME)-data -it vim-alpine vim /home/cm/.config/cherrymusic/cherrymusic.conf
+
 maintain:
 	docker run --rm --volumes-from $(NAME)-data -it vim-alpine /bin/bash
 

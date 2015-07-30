@@ -14,7 +14,7 @@ build:
 	docker build -t $(NAME) .
 
 maintain:
-	docker run --rm --volumes-from $(NAME)-data -it alpine-vim /bin/bash
+	docker run --rm --volumes-from $(NAME)-data -it vim-alpine /bin/bash
 
 data:
 	docker create \

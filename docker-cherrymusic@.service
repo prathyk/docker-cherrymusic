@@ -14,7 +14,7 @@ After=docker.service
 User=%I
 Restart=on-failure
 RestartSec=5
-ExecStart=/usr/bin/docker start cm-alpine
+ExecStart=/usr/bin/docker start -a cm-alpine
 ExecStop=/usr/bin/docker stop cm-alpine
 
 [Install]

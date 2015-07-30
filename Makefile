@@ -5,7 +5,7 @@ HTTP_PORT=9090
 SSL_PORT=9443
 MUSIC_PATH=~/Music
 
-all: build data run
+all: build data
 
 backup:
 	docker run --volumes-from $(NAME)-data -v $(shell pwd):/backup alpine tar cvzf /backup/backup.tar.gz /home/cm/{.local,.config}
@@ -23,12 +23,3 @@ data:
 	--volume /home/cm/.local/cherrymusic \
 	cm-alpine \
 	sh -c "chown -R cm:cm /home/cm/.config /home/cm/.local"
-
-run:
-	docker run \
-		--name $(NAME) \
-		--publish $(HTTP_PORT):8080 \
-		--publish $(SSL_PORT):8443 \
-		--volumes-from cm-alpine-data \
-		--volume $(MUSIC_PATH):/home/cm/Music \
-		-it cm-alpine

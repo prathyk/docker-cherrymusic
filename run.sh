@@ -1,6 +1,6 @@
 #!/bin/sh
 
-NAME=${cm:-alpine}
+NAME=${cm:-'cm-alpine'}
 HTTP_PORT=${1:-9090}
 MUSIC_PATH=${2:-$HOME/Music}
 

@@ -1,4 +1,3 @@
 *.bak
 share/*
 config/*.conf
-docker-cherrymusic@.service

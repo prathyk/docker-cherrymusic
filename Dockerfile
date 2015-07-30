@@ -26,8 +26,7 @@ EXPOSE 8080
 
 # mount your music folder into the basedir (docker run -v /path/to/music:/home/cm/basedir)
 # and do the same for the config and share folder
-VOLUME  /home/${CM_USER}/basedir \
-        /home/${CM_USER}/.config/cherrymusic \
+VOLUME  /home/${CM_USER}/.config/cherrymusic \
         /home/${CM_USER}/.local/share/cherrymusic
 
 USER    ${CM_USER}

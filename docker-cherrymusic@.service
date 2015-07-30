@@ -1,0 +1,21 @@
+# systemd unit file for cherrymusic docker service
+# Andreas Linz - klingt.net@gmail.com
+# https://github.com/klingtdotnet/docker-cherrymusic
+#
+# Note:
+#   - tasks that are prefixed with an `-` are allowed to fail
+
+[Unit]
+Description=Cherrymusic dockerized
+Requires=docker.service
+After=docker.service
+
+[Service]
+User=%I
+Restart=on-failure
+RestartSec=5
+ExecStart=/usr/bin/docker start cm-alpine
+ExecStop=/usr/bin/docker stop cm-alpine
+
+[Install]
+WantedBy=multi-user.target

@@ -31,7 +31,5 @@ VOLUME  /home/${CM_USER}/.config/cherrymusic \
         /home/${CM_USER}/.local/share/cherrymusic \
         /home/${CM_USER}/basedir
 
-USER    ${CM_USER}
-#ENV     HOME /home/${CM_USER}
 WORKDIR /home/${CM_USER}
-CMD     cherrymusic
+CMD     su -s /bin/sh -c 'cherrymusic' - ${CM_USER}

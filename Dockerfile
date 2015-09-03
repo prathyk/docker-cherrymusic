@@ -20,7 +20,8 @@ ENV CM_USER cm
 RUN adduser -h /home/${CM_USER} -s /sbin/nologin -D ${CM_USER}
 RUN su -s /bin/sh ${CM_USER} -c "mkdir -p \
     ~/.config/cherrymusic \
-    ~/.local/share/cherrymusic"
+    ~/.local/share/cherrymusic \
+    ~/basedir"
 
 EXPOSE 8080
 

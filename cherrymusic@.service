@@ -1,0 +1,25 @@
+# systemd unit file for cherrymusic docker service
+# Andreas Linz - klingt.net@gmail.com
+# https://github.com/klingtdotnet/docker-cherrymusic
+#
+# Note:
+#   - tasks that are prefixed with an `-` are allowed to fail
+
+[Unit]
+Description=Cherrymusic dockerized
+Requires=docker.service
+After=docker.service
+
+[Service]
+EnvironmentFile=/etc/sysconfig/cherrymusic
+User=%I
+ExecStartPre=-/usr/bin/docker rm -f cherrymusic
+ExecStart=/usr/bin/docker run --name cherrymusic \
+    -p ${CHERRYMUSIC_IP}:${CHERRYMUSIC_HTTP}:8080 \
+    --volumes-from cherrymusic-data \
+    --volume ${CHERRYMUSIC_MUSIC}:/home/cm/basedir:ro \
+    klingtdotnet/cherrymusic
+ExecStop=/usr/bin/docker stop cherrymusic
+
+[Install]
+WantedBy=multi-user.target

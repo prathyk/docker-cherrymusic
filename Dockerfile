@@ -10,7 +10,7 @@ RUN apk update &&\
 
 RUN pip3 install --upgrade pip &&\
     pip3 install cherrypy &&\
-    pip3 install cherrymusic==0.37.0
+    pip3 install cherrymusic==0.37.1
 
 # set locale
 ENV LANG en_US.UTF-8

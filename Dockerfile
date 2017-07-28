@@ -1,4 +1,4 @@
-FROM alpine:3.2
+FROM alpine:3.6
 MAINTAINER Andreas Linz "klingt.net@gmail.com"
 
 # install requirements
@@ -10,7 +10,7 @@ RUN apk update &&\
 
 RUN pip3 install --upgrade pip &&\
     pip3 install cherrypy &&\
-    pip3 install cherrymusic==0.37.1
+    pip3 install cherrymusic==0.40.0
 
 # set locale
 ENV LANG en_US.UTF-8
@@ -31,5 +31,8 @@ VOLUME  /home/${CM_USER}/.config/cherrymusic \
         /home/${CM_USER}/.local/share/cherrymusic \
         /home/${CM_USER}/basedir
 
+COPY entrypoint.sh /
+
 WORKDIR /home/${CM_USER}
-CMD     su -s /bin/sh -c 'cherrymusic' - ${CM_USER}
+CMD su -s /bin/sh -c 'cherrymusic' - ${CM_USER}
+ENTRYPOINT ["/entrypoint.sh"]

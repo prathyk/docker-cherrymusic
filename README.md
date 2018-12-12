@@ -5,31 +5,31 @@
 - create the data-container:
 
 ```sh
-docker create --name cherrymusic-data -v /home/cm/.config/cherrymusic -v /home/cm/.local/share/cherrymusic -v /path/to/local/music:/home/cm/basedir/:ro  klingtdotnet/cherrymusic
+docker create --name cherrymusic-data -v /home/cm/.config/cherrymusic -v /home/cm/.local/share/cherrymusic -v /path/to/local/music:/home/cm/basedir/:ro  prathyk/cherrymusic
 ```
 
 - run once to create the initial configuration
 
 ```sh
-docker run --rm --volumes-from cherrymusic-data -it klingtdotnet/cherrymusic
+docker run --rm --volumes-from cherrymusic-data -it prathyk/cherrymusic
 ```
 
 - edit the configuration
 
 ```sh
-docker run --rm --volumes-from cherrymusic-data -it klingtdotnet/vim vim /home/cm/.config/cherrymusic/cherrymusic.conf
+docker run --rm --volumes-from cherrymusic-data -it prathyk/vim vim /home/cm/.config/cherrymusic/cherrymusic.conf
 ```
 
 - normal run with read-only mounted music volume (or as SystemD service)
 
 ```sh
-docker run --rm --volumes-from cherrymusic-data --volume /path/to/local/music:/home/cm/basedir/:ro -it klingtdotnet/vim vim /home/cm/.¬config/cherrymusic/cherrymusic.conf
+docker run --rm --volumes-from cherrymusic-data --volume /path/to/local/music:/home/cm/basedir/:ro -it prathyk/vim vim /home/cm/.¬config/cherrymusic/cherrymusic.conf
 ```
 
 - start the docker directly
 
 ```sh
-docker run --name cherrymusic -p 127.0.0.1:2345:8080 --volumes-from cherrymusic-data talip1/cherrymusic
+docker run --name cherrymusic -p 127.0.0.1:2345:8080 --volumes-from cherrymusic-data prathyk/cherrymusic
 ```
 ### SystemD Service
 

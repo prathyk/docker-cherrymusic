@@ -34,5 +34,5 @@ VOLUME  /home/${CM_USER}/.config/cherrymusic \
 COPY entrypoint.sh /
 
 WORKDIR /home/${CM_USER}
-CMD su -s /bin/sh -c 'cherrymusic' - ${CM_USER}
+CMD su -s /bin/sh -c 'cherrymusic --conf media.basedir=/home/${CM_USER}/basedir' - ${CM_USER}
 ENTRYPOINT ["/entrypoint.sh"]

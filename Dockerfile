@@ -14,25 +14,20 @@ RUN pip3 install --upgrade pip &&\
 
 # set locale
 ENV LANG en_US.UTF-8
-ENV CM_USER cm
 
 # create user that runs cherrymusic
-RUN adduser -h /home/${CM_USER} -s /sbin/nologin -D ${CM_USER}
-RUN su -s /bin/sh ${CM_USER} -c "mkdir -p \
-    ~/.config/cherrymusic \
-    ~/.local/share/cherrymusic \
-    ~/basedir"
+RUN mkdir -p  ~/.config/cherrymusic ~/.local/share/cherrymusic ~/basedir
 
 EXPOSE 8080
 
 # mount your music folder into the basedir (docker run -v /path/to/music:/home/cm/basedir)
 # and do the same for the config and share folder
-VOLUME  /home/${CM_USER}/.config/cherrymusic \
-        /home/${CM_USER}/.local/share/cherrymusic \
-        /home/${CM_USER}/basedir
+VOLUME  /root/.config/cherrymusic \
+        /root/.local/share/cherrymusic \
+        /root/basedir
 
 COPY entrypoint.sh /
 
-WORKDIR /home/${CM_USER}
-CMD su -s /bin/sh -c 'cherrymusic --conf media.basedir=/home/${CM_USER}/basedir' - ${CM_USER}
+WORKDIR /root
+CMD /bin/sh -c 'cherrymusic --conf media.basedir=/root/basedir'
 ENTRYPOINT ["/entrypoint.sh"]

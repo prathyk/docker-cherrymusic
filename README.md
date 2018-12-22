@@ -7,6 +7,9 @@
 ```sh
 docker create --name cherrymusic-data -v /home/cm/.config/cherrymusic -v /home/cm/.local/share/cherrymusic -v /path/to/local/music:/home/cm/basedir/:ro  prathyk/cherrymusic
 ```
+```sh
+docker run --name cherrymusic -p 127.0.0.1:2345:8080 -v /home/talip/.config/cherrymusic -v /home/talip/.local/share/cherrymusic -v /sdcard/Music/cherry:/home/talip/basedir -it prathyk/cherrymusic
+```
 
 - run once to create the initial configuration
 
